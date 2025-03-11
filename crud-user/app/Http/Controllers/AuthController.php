@@ -44,7 +44,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect('/users');
+            return redirect('/dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials.']);

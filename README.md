@@ -17,3 +17,8 @@ php artisan make:model User -mcr
 7. Pada controller buat logic2 yang diperlukan
 8. Buat routing pada routes/web.php agar controller terdeteksi
 9. Buat view yang berkaitan pada folder resources/view/auth
+10 Jadi deh
+11. Kalo mau edit styling di public.css lalu embed stylesheet di resources/views
+
+11. Semisal mau menambah fitur baru tinggal ikuti alur
+buat model(apabila perlu) -> buat route -> buat controller dan logicnya -> buat viewnya

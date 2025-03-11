@@ -75,4 +75,13 @@ class UserController extends Controller
         User::destroy($id);
         return redirect('/users');
     }
+
+    public function testApi()
+    {
+        return response()->json([
+            'message' => 'API test successful!',
+            'status' => 200
+        ]);
+    }
+
 }
