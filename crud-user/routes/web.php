@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use Livewire\LivewireManager;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,3 +28,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Dashboard Route
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// Check livewire
+Route::get('/livewire-components', function (LivewireManager $livewire) {
+    return response()->json($livewire->getComponentAliases());
+});

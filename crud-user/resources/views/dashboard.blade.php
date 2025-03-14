@@ -1,27 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+{{-- resources/views/dashboard.blade.php --}}
+@extends('layouts.app')
 
-</head>
-<body>
-    <div class="sidebar">
-        <h4>Dashboard</h4>
-        <a href="#">🏠 Home</a>
-        <a href="#">⚙️ Settings</a>
-        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-        @csrf
-        <button type="submit" class="btn btn-danger">🚪 Logout</button>
-</form>
-
+@section('content')
+<div class="dashboard">
+    <h1>Dashboard</h1>
+    <div class="cards">
+        <div class="card">
+            <h3>Page Views</h3>
+            <p>12,450 <span class="increase">+15.8%</span></p>
+        </div>
+        <div class="card">
+            <h3>Total Revenue</h3>
+            <p>$363.95 <span class="decrease">-34.0%</span></p>
+        </div>
+        <div class="card">
+            <h3>Bounce Rate</h3>
+            <p>86.5% <span class="increase">+24.2%</span></p>
+        </div>
+        <div class="card">
+            <h3>Total Subscribers</h3>
+            <p>24,473 <span class="increase">+8.3%</span></p>
+        </div>
     </div>
-    <div class="main-content">
-        <h2>Welcome, {{ $user->name }}!</h2>
-        <p>This is your minimalist dashboard.</p>
-    </div>
-</body>
-</html>
+</div>
+@endsection
