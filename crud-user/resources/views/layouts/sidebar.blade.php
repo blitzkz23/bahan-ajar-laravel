@@ -3,13 +3,18 @@
         <img src="{{ asset('images/logodinsos.jpg') }}" alt="Dashboard Logo" class="logo-img">
     </div>
     <ul>
-        <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-        <li><a href="#"><i class="fas fa-credit-card"></i> Payment</a></li>
-        <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
-        <li><a href="#"><i class="fas fa-envelope"></i> Message</a></li>
-        <li><a href="#"><i class="fas fa-box"></i> Product</a></li>
-        <li><a href="#"><i class="fas fa-file-invoice"></i> Invoice</a></li>
-        <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
+        <li>
+            <a href="{{ route('dashboard') }}" 
+               class="{{ Request::routeIs('dashboard') ? 'active' : '' }}">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('panti.index') }}" 
+               class="{{ Request::routeIs('panti.*') ? 'active' : '' }}">
+                <i class="fas fa-hospital"></i> Panti Sosial
+            </a>
+        </li>
     </ul>
     <form action="{{ route('logout') }}" method="POST">
         @csrf

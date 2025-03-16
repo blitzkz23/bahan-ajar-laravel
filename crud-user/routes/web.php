@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PantiSosialController;
 use Livewire\LivewireManager;
 
 Route::get('/', function () {
@@ -26,10 +27,15 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Dashboard Route
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+// Tambahkan route untuk dashboard
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 // Check livewire
 Route::get('/livewire-components', function (LivewireManager $livewire) {
     return response()->json($livewire->getComponentAliases());
 });
+
+// Panti Sosial Routes
+Route::resource('panti', PantiSosialController::class);

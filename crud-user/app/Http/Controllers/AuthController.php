@@ -16,11 +16,15 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users', 
+                'password' => 'required|min:6|confirmed',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return back()->withErrors($e->errors())->withInput();
+        }
 
         User::create([
             'name' => $request->name,
@@ -47,7 +51,9 @@ class AuthController extends Controller
             return redirect('/dashboard');
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials.']);
+        return back()
+            ->withInput($request->only('email'))
+            ->withErrors(['message' => 'Email atau password yang Anda masukkan salah.']);
     }
 
     public function logout()

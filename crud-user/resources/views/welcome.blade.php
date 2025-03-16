@@ -6,7 +6,7 @@
 
         <title>Laravel</title>
 
-        @livewire('counter')
+        <!-- @livewire('counter') -->
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

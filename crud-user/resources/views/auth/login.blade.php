@@ -4,33 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-<div class="container">
-    <h2>Login</h2>
+<div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
     
     @if (session('error'))
-        <p style="color: red;">{{ session('error') }}</p>
+        <p class="text-red-500 text-sm mb-4">{{ session('error') }}</p>
     @endif
 
-    <form action="{{ route('login') }}" method="POST">
+    <form method="POST" action="{{ route('login') }}" class="space-y-6">
         @csrf
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
+        <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" 
+                   id="email" 
+                   name="email" 
+                   value="{{ old('email') }}" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" required>
+
+        <div class="space-y-2">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" 
+                   id="password" 
+                   name="password" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-        <button type="submit" class="btn">Login</button>
+
+        @if ($errors->any())
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 my-4">
+            <ul class="list-disc list-inside text-sm text-red-600">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        <button type="submit" 
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+            Login
+        </button>
     </form>
 
-    <p class="text-center">Belum punya akun?<a href="/register">Daftar</a></p>
+    <p class="mt-6 text-center text-sm text-gray-600">
+        Belum punya akun? 
+        <a href="/register" class="text-blue-600 hover:text-blue-700 font-medium">Daftar</a>
+    </p>
 </div>
 
 </body>
 </html>
+

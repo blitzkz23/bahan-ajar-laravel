@@ -4,36 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-<div class="container">
-    <h2>Register</h2>
+<div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register</h2>
 
-    <form action="{{ route('register') }}" method="POST">
+    <form action="{{ route('register') }}" method="POST" class="space-y-6">
         @csrf
-        <div class="input-group">
-            <label for="name">Nama</label>
-            <input type="text" name="name" required>
+        <div class="space-y-2">
+            <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
+            <input type="text" 
+                   name="name" 
+                   value="{{ old('name') }}" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-        <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
+
+        <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" 
+                   name="email" 
+                   value="{{ old('email') }}" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" required>
+
+        <div class="space-y-2">
+            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" 
+                   name="password" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-        <div class="input-group">
-            <label for="password_confirmation">Konfirmasi Password</label>
-            <input type="password" name="password_confirmation" required>
+
+        <div class="space-y-2">
+            <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Konfirmasi Password</label>
+            <input type="password" 
+                   name="password_confirmation" 
+                   required 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
-        <button type="submit" class="btn">Daftar</button>
+
+        @if ($errors->any())
+        <div class="bg-red-50 border-l-4 border-red-500 p-4">
+            <ul class="list-disc list-inside text-sm text-red-600">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        <button type="submit" 
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+            Daftar
+        </button>
     </form>
 
-    <p class="text-center">Sudah punya akun? <a href="{{ url('/login') }}">Login</a></p>
+    <p class="mt-6 text-center text-sm text-gray-600">
+        Sudah punya akun? 
+        <a href="{{ url('/login') }}" class="text-blue-600 hover:text-blue-700 font-medium">Login</a>
+    </p>
 </div>
 
 </body>
