@@ -9,10 +9,16 @@ class PenerimaManfaat extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'nik', 'alamat', 'panti_id'];
+    protected $fillable = [
+        'nama', 
+        'nik', 
+        'alamat', 
+        'panti_id',
+        'tanggal_masuk'
+    ];
 
-    public function panti()
+    public function pantiSosial()
     {
-        return $this->belongsTo(Panti::class);
+        return $this->belongsTo(PantiSosial::class, 'panti_id', 'id');
     }
 }

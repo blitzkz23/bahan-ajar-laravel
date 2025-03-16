@@ -29,6 +29,17 @@
                     <span>Panti Sosial</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{ route('penerima-manfaat.index') }}" 
+                   class="{{ Request::routeIs('penerima-manfaat.*') 
+                       ? 'bg-blue-50 text-blue-600 font-medium' 
+                       : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600' }} 
+                       flex items-center px-4 py-2 text-sm rounded-lg transition-colors">
+                    <i class="fas fa-users w-5 h-5 mr-3"></i>
+                    <span>Penerima Manfaat</span>
+                </a>
+            </li>
         </ul>
     </div>
 

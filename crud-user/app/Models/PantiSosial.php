@@ -9,6 +9,8 @@ class PantiSosial extends Model
 {
     use HasFactory;
 
+    protected $table = 'panti_sosials';
+
     protected $fillable = ['nama', 'alamat', 'kontak'];
 
     public function penerimaManfaat()
