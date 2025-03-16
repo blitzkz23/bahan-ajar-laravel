@@ -26,7 +26,7 @@ class PantiSosialController extends Controller
             'kontak' => 'nullable|string|max:20',
         ]);
 
-        Panti::create($request->all());
+        PantiSosial::create($request->all());
 
         return redirect()->route('panti.index')->with('success', 'Panti berhasil ditambahkan!');
     }
