@@ -10,7 +10,7 @@ use Livewire\LivewireManager;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/users', [UserController::class, 'index']);

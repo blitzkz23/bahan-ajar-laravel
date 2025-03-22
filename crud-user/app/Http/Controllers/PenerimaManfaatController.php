@@ -50,7 +50,8 @@ class PenerimaManfaatController extends Controller
         $validated = $request->validate([
             'nama' => 'required',
             'nik' => 'required|unique:penerima_manfaats,nik,' . $penerimaManfaat->id,
-            'panti_id' => 'required|exists:pantis,id',
+            'alamat' => 'required',
+            'panti_id' => 'required|exists:panti_sosials,id',
         ]);
 
         $penerimaManfaat->update($validated);

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-6 mx-auto bg-white rounded-lg shadow-md">
+<div class="p-6">
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800">Daftar Panti Sosial</h2>
         <a href="{{ route('panti.create') }}" 
            class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200 text-sm font-medium">
-            Tambah Panti
+            <i class="fas fa-plus mr-2"></i>Tambah Panti
         </a>
     </div>
 
@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <div class="overflow-x-auto">
+    <div class="bg-white rounded-lg shadow overflow-hidden">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
@@ -43,16 +43,23 @@
                             {{ $panti->kontak ?? '-' }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div class="flex space-x-2">
+                            <div class="flex space-x-3">
                                 <a href="{{ route('panti.edit', $panti->id) }}" 
-                                   class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                <form action="{{ route('panti.destroy', $panti->id) }}" method="POST" class="inline">
+                                   class="text-indigo-600 hover:text-indigo-900 flex items-center">
+                                    <i class="fas fa-edit mr-1"></i>
+                                    <span>Edit</span>
+                                </a>
+                                
+                                <form action="{{ route('panti.destroy', $panti->id) }}" 
+                                      method="POST" 
+                                      class="inline-block"
+                                      onsubmit="return confirm('Apakah Anda yakin ingin menghapus panti ini? Data yang terhapus tidak dapat dikembalikan.');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" 
-                                            class="text-red-600 hover:text-red-900"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                        Hapus
+                                            class="text-red-600 hover:text-red-900 flex items-center">
+                                        <i class="fas fa-trash mr-1"></i>
+                                        <span>Hapus</span>
                                     </button>
                                 </form>
                             </div>
