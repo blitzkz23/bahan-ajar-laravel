@@ -40,6 +40,50 @@
                     <span>Penerima Manfaat</span>
                 </a>
             </li>
+
+            <li>
+                <a href="{{ route('bantuan.index') }}" 
+                   class="{{ Request::routeIs('bantuan.*') 
+                       ? 'bg-blue-50 text-blue-600 font-medium' 
+                       : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600' }} 
+                       flex items-center px-4 py-2 text-sm rounded-lg transition-colors">
+                    <i class="fas fa-hand-holding-heart w-5 h-5 mr-3"></i>
+                    <span>Bantuan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('penerima-bantuan.index') }}" 
+                   class="{{ Request::routeIs('penerima-bantuan.*') 
+                       ? 'bg-blue-50 text-blue-600 font-medium' 
+                       : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600' }} 
+                       flex items-center px-4 py-2 text-sm rounded-lg transition-colors">
+                    <i class="fas fa-user-check w-5 h-5 mr-3"></i>
+                    <span>Penerima Bantuan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('laporan.index') }}" 
+                   class="{{ Request::routeIs('laporan.*') 
+                       ? 'bg-blue-50 text-blue-600 font-medium' 
+                       : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600' }} 
+                       flex items-center px-4 py-2 text-sm rounded-lg transition-colors">
+                    <i class="fas fa-file-alt w-5 h-5 mr-3"></i>
+                    <span>Laporan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('program-rehabilitasi.index') }}" 
+                   class="{{ Request::routeIs('program-rehabilitasi.*') 
+                       ? 'bg-blue-50 text-blue-600 font-medium' 
+                       : 'text-gray-600 hover:bg-gray-50 hover:text-blue-600' }} 
+                       flex items-center px-4 py-2 text-sm rounded-lg transition-colors">
+                    <i class="fas fa-heartbeat w-5 h-5 mr-3"></i>
+                    <span>Program Rehabilitasi</span>
+                </a>
+            </li>
         </ul>
     </div>
 

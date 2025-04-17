@@ -6,6 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PantiSosialController;
 use App\Http\Controllers\PenerimaManfaatController;
+use App\Http\Controllers\BantuanController;
+use App\Http\Controllers\PenerimaBantuanController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\ProgramRehabilitasiController;
 use Livewire\LivewireManager;
 
 
@@ -40,5 +44,15 @@ Route::get('/livewire-components', function (LivewireManager $livewire) {
 });
 
 // Panti Sosial Routes
-Route::resource('panti', PantiSosialController::class);
-Route::resource('penerima-manfaat', PenerimaManfaatController::class);
+Route::resource('panti', PantiSosialController::class)->middleware('auth');
+Route::resource('penerima-manfaat', PenerimaManfaatController::class)->middleware('auth');
+Route::resource('bantuan', BantuanController::class)->middleware('auth');
+
+// Route untuk CRUD Penerima Bantuan
+Route::resource('penerima-bantuan', PenerimaBantuanController::class)->middleware('auth');
+
+// Route untuk CRUD Laporan
+Route::resource('laporan', LaporanController::class)->middleware('auth');
+
+// Route untuk CRUD Program Rehabilitasi
+Route::resource('program-rehabilitasi', ProgramRehabilitasiController::class)->middleware('auth');
